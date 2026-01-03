@@ -25,6 +25,12 @@ const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity, onResult,
 
   const renderVisual = () => {
     switch (activity.type) {
+      case 'toan_loi_van':
+        return (
+          <div className="my-6 p-6 bg-orange-50 border-2 border-orange-100 rounded-2xl flex items-center justify-center">
+            <div className="text-5xl">📖</div>
+          </div>
+        );
       case 'dem_hinh_nang_cao':
         const groups = activity.data.groups;
         const size = activity.data.size;
@@ -47,7 +53,7 @@ const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity, onResult,
                 <React.Fragment key={i}>
                   <div className="flex flex-col items-center">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-sm text-lg ${
-                      val === null ? 'bg-indigo-100 text-indigo-600 animate-pulse border-2 border-dashed border-indigo-400' : 'bg-white border-2 border-slate-200 text-slate-700'
+                      val === null ? 'bg-orange-100 text-orange-600 animate-pulse border-2 border-dashed border-orange-400' : 'bg-white border-2 border-slate-200 text-slate-700'
                     }`}>
                       {val === null ? '?' : val}
                     </div>
@@ -65,14 +71,14 @@ const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity, onResult,
         return (
           <div className="flex justify-center my-8 p-6 bg-slate-50 rounded-2xl">
             {activity.data.shape === 'square' && (
-              <div className="w-32 h-32 border-4 border-indigo-500 bg-indigo-50 rounded-sm flex items-center justify-center font-bold text-indigo-300">HV</div>
+              <div className="w-32 h-32 border-4 border-orange-500 bg-orange-50 rounded-sm flex items-center justify-center font-bold text-orange-300">HV</div>
             )}
             {activity.data.shape === 'rectangle' && (
               <div className="w-48 h-32 border-4 border-emerald-500 bg-emerald-50 rounded-sm flex items-center justify-center font-bold text-emerald-300">HCN</div>
             )}
             {activity.data.shape === 'triangle' && (
               <svg width="120" height="100" viewBox="0 0 120 100">
-                <path d="M60 10 L10 90 L110 90 Z" fill="#fef3c7" stroke="#f59e0b" strokeWidth="4" />
+                <path d="M60 10 L10 90 L110 90 Z" fill="#fff7ed" stroke="#f97316" strokeWidth="4" />
               </svg>
             )}
             {activity.data.item === 'ice' && <div className="text-6xl animate-pulse">🧊</div>}
@@ -84,16 +90,16 @@ const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity, onResult,
           return (
             <div className="flex justify-center my-8 items-center gap-4 text-4xl font-black">
               <span className="text-slate-800">{activity.data.n1}</span>
-              <span className="text-indigo-600">{activity.data.symbol || symbol}</span>
+              <span className="text-orange-600">{activity.data.symbol || symbol}</span>
               <span className="text-slate-800">{activity.data.n2}</span>
               <span className="text-slate-400">=</span>
-              <span className="px-6 py-2 bg-slate-100 border-2 border-dashed border-slate-300 rounded-xl text-indigo-600">?</span>
+              <span className="px-6 py-2 bg-slate-100 border-2 border-dashed border-slate-300 rounded-xl text-orange-600">?</span>
             </div>
           );
         }
         if (activity.data.display) {
           return (
-             <div className="text-3xl font-bold text-center my-6 text-indigo-600 bg-indigo-50 p-4 rounded-xl inline-block mx-auto">
+             <div className="text-3xl font-bold text-center my-6 text-orange-600 bg-orange-50 p-4 rounded-xl inline-block mx-auto">
                {activity.data.display}
              </div>
           );
@@ -122,13 +128,13 @@ const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity, onResult,
           className={`w-full p-4 text-2xl font-bold text-center rounded-2xl border-4 transition-all focus:outline-none shadow-inner ${
             isCompleted 
               ? 'bg-green-50 border-green-500 text-green-700' 
-              : 'bg-white border-slate-200 focus:border-indigo-400 text-slate-700'
+              : 'bg-white border-slate-200 focus:border-orange-400 text-slate-700'
           }`}
         />
         {!isCompleted && (
           <button 
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-black text-lg shadow-lg hover:shadow-indigo-200 transition-all active:scale-95"
+            className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-2xl font-black text-lg shadow-lg hover:shadow-orange-200 transition-all active:scale-95"
           >
             Nộp bài
           </button>
