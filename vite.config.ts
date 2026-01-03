@@ -3,13 +3,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  // Base path cho Toán 3 Tập 2
-  base: '/toan3t2kntt/',
+  // Sử dụng đường dẫn tương đối để app chạy được ở mọi sub-folder
+  base: './',
   plugins: [react()],
   build: {
     outDir: 'dist',
     emptyOutDir: true,
     assetsDir: 'assets',
     sourcemap: false
+  },
+  server: {
+    port: 3000
   }
 });
